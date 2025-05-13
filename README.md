@@ -35,3 +35,4 @@ Déploiement modèles machine learning avec flask et le front-end avec angular
 # DeploiementValid
 Déployer des modèles machine learning et le dashboard power bi avec flask et front-end angular
 >>>>>>> e2f9d0ee8a9b9a46029d159696c7fc5e67b69482
+http://localhost:8000/home.html
