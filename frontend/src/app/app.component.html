@@ -1,0 +1,136 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1>Prédiction de Mortalité Hospitalière</h1>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #predictionForm="ngForm">
+        <div class="form-group">
+          <label for="bmi">IMC (BMI)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="bmi"
+            name="bmi"
+            [(ngModel)]="formData.bmi"
+            required
+            min="10"
+            max="60"
+            step="0.1"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Genre</label>
+          <select
+            class="form-control"
+            id="gender"
+            name="gender"
+            [(ngModel)]="formData.gender"
+            required
+          >
+            <option value="">Sélectionnez</option>
+            <option value="1">Homme</option>
+            <option value="0">Femme</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="years_experience">Années d'expérience du médecin</label>
+          <input
+            type="number"
+            class="form-control"
+            id="years_experience"
+            name="years_experience"
+            [(ngModel)]="formData.years_experience"
+            required
+            min="0"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="speciality">Spécialité</label>
+          <select
+            class="form-control"
+            id="speciality"
+            name="speciality"
+            [(ngModel)]="formData.speciality"
+            required
+          >
+            <option value="">Sélectionnez</option>
+            <option value="0">Médecine générale</option>
+            <option value="1">Cardiologie</option>
+            <option value="2">Chirurgie</option>
+            <option value="3">Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="discharge_location">Lieu de sortie</label>
+          <select
+            class="form-control"
+            id="discharge_location"
+            name="discharge_location"
+            [(ngModel)]="formData.discharge_location"
+            required
+          >
+            <option value="">Sélectionnez</option>
+            <option value="0">Domicile</option>
+            <option value="1">Autre établissement</option>
+            <option value="2">Centre de réadaptation</option>
+            <option value="3">Décès</option>
+          </select>
+        </div>
+
+        <div class="button-group">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!predictionForm.form.valid || loading"
+          >
+            {{ loading ? 'Prédiction en cours...' : 'Prédire' }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="resetForm()"
+          >
+            Réinitialiser
+          </button>
+        </div>
+      </form>
+
+      <div *ngIf="error" class="alert alert-danger mt-3">
+        {{ error }}
+      </div>
+
+      <div *ngIf="prediction" class="result mt-3" [ngClass]="{'high-risk': prediction.risk_level === 'Élevé', 'low-risk': prediction.risk_level === 'Faible'}">
+        <h3>Résultat de la prédiction</h3>
+        <p class="risk-level">Niveau de risque : <strong>{{ prediction.risk_level }}</strong></p>
+        <p class="probability">Probabilité : {{ prediction.probability_percentage }}</p>
+        
+        <div *ngIf="prediction.risk_factors.length > 0">
+          <h4>Facteurs de risque identifiés :</h4>
+          <ul>
+            <li *ngFor="let factor of prediction.risk_factors">{{ factor }}</li>
+          </ul>
+        </div>
+
+        <div class="feature-importance mt-3">
+          <h4>Importance des facteurs</h4>
+          <div class="progress-container" *ngFor="let item of prediction.feature_importance | keyvalue">
+            <label>{{ item.key }}</label>
+            <div class="progress">
+              <div
+                class="progress-bar"
+                [style.width]="(item.value * 100) + '%'"
+              >
+                {{ (item.value * 100).toFixed(1) }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
