@@ -1,38 +1,19 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# DeploiementBi
+Developed an end-to-end healthcare analytics solution designed to enhance hospital decision-making through real-time data and predictive models. The platform integrates Data Warehousing, Machine Learning, Deep Learning, and Business Intelligence to support both operational efficiency and patient outcomes.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+🔹 Key Contributions & Features:
 
-## Development server
+Designed and implemented a complete ETL pipeline using Talend and SQL Server (SSMS), covering staging and data warehouse layers.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Built interactive Power BI dashboards, embedded and automated to deliver real-time insights for hospital management.
 
-## Code scaffolding
+Developed and deployed predictive models, including:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+⚰️ Mortality prediction based on medical and operational factors
 
-## Build
+💰 Patient-specific hospital cost estimation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Implemented a Deep Learning CNN model for stroke detection from CT-Scan images.
 
-## Running unit tests
+Deployed models via Flask API, integrated into a modern Angular-based web interface with a user-friendly UI/UX.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-=======
-# ValdationDeploiement
-Déploiement modèles machine learning avec flask et le front-end avec angular
->>>>>>> 9672e592a28a2b39f564a15ddae62c6b266205cd
-=======
-# DeploiementValid
-Déployer des modèles machine learning et le dashboard power bi avec flask et front-end angular
->>>>>>> e2f9d0ee8a9b9a46029d159696c7fc5e67b69482
-http://localhost:8000/home.html
+📌 This project provided hands-on experience in data engineering, predictive modeling, BI visualization, and full-stack deployment, highlighting the ability to deliver end-to-end AI & BI solutions in the healthcare sector.
